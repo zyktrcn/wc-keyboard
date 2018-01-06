@@ -40,7 +40,7 @@
 		<!-- 自定义输入框 -->
 		<div class="input-box" @touchstart.stop="focus">
 			<!-- 左侧标签 -->
-			<p class="label">{{label}} : </p>
+			<p class="label">{{label}} </p>
 			<!-- 右侧内容 -->
 			<div class="content">
 				<p class="input">
@@ -87,6 +87,12 @@
 			},
 			placeholder: {
 				default: '询问服务员后输入'
+			}
+		},
+		watch: {
+			value (newVal, oldVal) {
+				this.val = newVal
+				this.blur()
 			}
 		},
 		data () {
@@ -160,6 +166,7 @@
 			},
 			/*判读是否需要加0*/
 			toCompletion () {
+				if (!this.value) return
 				let list = this.value.split('.');
 				if (typeof list[1] === 'undefined') {
 					if (this.val !== '') {

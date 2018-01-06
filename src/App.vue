@@ -21,9 +21,9 @@
 </template>
 <script>
   export default {
-    data () {
-      return {
-        val: ''
+    props: {
+      val: {
+        default: ''
       }
     }
   }
